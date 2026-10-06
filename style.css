@@ -1,0 +1,85 @@
+:root {
+  --bg: #e9eef3;
+  --panel: #ffffff;
+  --screen: #14213d;
+  --screen-text: #f1f5f9;
+  --screen-dim: #94a3b8;
+  --key: #f1f5f9;
+  --key-text: #1e293b;
+  --fn: #dbe3ec;
+  --op: #3d3a8f;
+  --op-text: #ffffff;
+  --eq: #0f766e;
+  --focus: #f59e0b;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --panel: #172033;
+    --screen: #0b1220;
+    --key: #243049;
+    --key-text: #e2e8f0;
+    --fn: #33415c;
+    --op: #6d6ad6;
+    --eq: #14958a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: var(--bg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+.calc {
+  width: 100%;
+  max-width: 340px;
+  padding: 16px;
+  border-radius: 20px;
+  background: var(--panel);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+}
+.screen {
+  min-height: 104px;
+  margin-bottom: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--screen);
+  color: var(--screen-text);
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.history { min-height: 1.4em; font-size: 0.95rem; color: var(--screen-dim); }
+.display {
+  font-size: 2.6rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.display.small { font-size: 1.3rem; }
+.keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+button {
+  height: 58px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--key);
+  color: var(--key-text);
+  font: inherit;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+button:hover { filter: brightness(0.95); }
+button:active { transform: translateY(1px); }
+button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.fn { background: var(--fn); }
+.op { background: var(--op); color: var(--op-text); }
+.eq { background: var(--eq); color: #fff; }
+.zero { grid-column: span 2; }
+@media (prefers-reduced-motion: reduce) { button:active { transform: none; } }
